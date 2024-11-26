@@ -1,0 +1,40 @@
+/* globals.css */
+
+:root {
+    --background: #F7F7F7;  /* 페이지의 전체 배경색 (연한 회색) */
+    --foreground: #171717;  /* 기본 텍스트 색상 */
+    --primary-color: #7C001A;  /* 메인 색상 (버건디) */
+    --accent-color: #E30547;  /* 강조 색상 */
+    --font-size-large: 1.25rem; /* 큰 텍스트 기본 크기 */
+    --font-size-medium: 1rem;  /* 중간 텍스트 기본 크기 */
+    --font-size-small: 0.875rem; /* 작은 텍스트 기본 크기 */
+    --font-weight-bold: bold;
+}
+
+body {
+    color: var(--foreground);
+    background-color: var(--background); /* 전체 배경색을 연한 회색으로 설정 */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--accent-color); /* 링크에 강조 색상 적용 */
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c0043b; /* 강조 색상보다 약간 어두운 색으로 호버 효과 추가 */
+}

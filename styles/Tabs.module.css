@@ -1,0 +1,44 @@
+/* Tabs.module.css */
+
+.nav {
+    display: flex;
+    flex-wrap: wrap; /* 탭들이 화면 크기에 맞게 줄 바꿈 */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.yearNav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;  /* 두 번째 줄에서 간격을 확보하기 위해 여백을 추가 */
+    width: 100%;
+}
+
+/* 기본 탭 스타일 */
+.tabButton, .yearButton {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 탭 버튼 호버 효과 */
+.tabButton:hover, .yearButton:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* 활성화된 탭 버튼 스타일 */
+.active {
+    background-color: var(--accent-color);
+    color: white;
+}
