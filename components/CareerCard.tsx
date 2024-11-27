@@ -11,6 +11,8 @@ interface CareerCardProps {
 
 const CareerCard: React.FC<CareerCardProps> = ({ year, organization, position, period, certificate }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  void year; // 'year' 변수를 명시적으로 사용하지만 아무 영향이 없도록 함
+
   return (
     <div className={styles.card}>
       <div className={styles.certificateContainer}>
