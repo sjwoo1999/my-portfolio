@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/AwardCard.module.css';
+import Image from 'next/image';
 
 interface AwardCardProps {
   title: string;         // 상 이름
@@ -13,7 +14,7 @@ const AwardCard: React.FC<AwardCardProps> = ({ title, award, organization, certi
   return (
     <div className={styles.card}>
       <div className={styles.certificateContainer}>
-        <img src={certificate} alt={`${award} certificate`} className={styles.certificateImage} />
+        <Image src={certificate} alt={`${award} certificate`} className={styles.certificateImage} />
       </div>
       <div className={styles.info}>
         <div className={styles.title}>{title}</div>
