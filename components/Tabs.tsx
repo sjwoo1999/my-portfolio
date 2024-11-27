@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/Tabs.module.css';
 
 interface TabsProps {
@@ -18,13 +18,14 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
 
   const yearItems = [
     { key: '전체', label: '전체' },
-    { key: '2022', label: '2022' },
-    { key: '2023', label: '2023' },
     { key: '2024', label: '2024' },
+    { key: '2023', label: '2023' },
+    { key: '2022', label: '2022' },
   ];
 
   return (
     <>
+      {/* 탭 버튼들 */}
       <nav className={styles.nav}>
         {tabItems.map((item) => (
           <button
@@ -39,7 +40,9 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
           </button>
         ))}
       </nav>
-      {(activeTab === 'career' || activeTab === 'projects' || activeTab === 'awards') && (
+
+      {/* 학력 탭에서는 연도 버튼 숨김 */}
+      {activeTab !== 'education' && (
         <nav className={styles.yearNav}>
           {yearItems.map((item) => (
             <button

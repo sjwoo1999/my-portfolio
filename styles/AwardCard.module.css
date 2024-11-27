@@ -1,57 +1,66 @@
-/* AwardCard.module.css */
-
 .card {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid var(--accent-color);
     border-radius: 10px;
     background-color: white;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    line-height: 1.6;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-.logoContainer {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
+.certificateContainer {
+    width: 100%;
+    max-width: 400px; /* Ensure the certificate image doesn't exceed a reasonable size */
+    margin-bottom: 1rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: var(--primary-color);
-    margin-right: 1.5rem;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
-.logo {
+.certificateImage {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain; /* Ensure the image fits within the container nicely */
 }
 
 .info {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.awardTitle {
+.title, .organization {
     font-size: 1.25rem;
+    margin-bottom: 0.5rem;
     font-weight: bold;
     color: var(--foreground);
 }
 
-.position {
+.award {
     font-size: 1rem;
-    color: #555;
+    margin-bottom: 0.25rem;
+    color: var(--accent-color);
+    font-weight: bold;
 }
 
-.period {
-    font-size: 0.875rem;
-    color: #888;
-    margin-top: 0.5rem;
+.awardDate {
+    font-size: 1rem;  /* 적절한 크기로 설정 */
+    color: #666;  /* 색상을 지정해서 명확하게 표시 */
+    margin-top: 0.5rem;  /* 여백 추가 */
 }

@@ -2,22 +2,23 @@ import React from 'react';
 import styles from '../styles/CareerCard.module.css';
 
 interface CareerCardProps {
-  logo: string;  // 회사 로고 이미지 경로
-  companyName: string; // 회사명
-  position: string; // 직무명
-  period: string; // 기간
+  year: string;
+  organization: string;
+  position: string;
+  period: string;
+  certificate: string;
 }
 
-const CareerCard: React.FC<CareerCardProps> = ({ logo, companyName, position, period }) => {
+const CareerCard: React.FC<CareerCardProps> = ({ year, organization, position, period, certificate }) => {
   return (
     <div className={styles.card}>
-      <div className={styles.logoContainer}>
-        <img src={logo} alt={`${companyName} logo`} className={styles.logo} />
+      <div className={styles.certificateContainer}>
+        <img src={certificate} alt={`${organization} certificate`} className={styles.certificateImage} />
       </div>
       <div className={styles.info}>
-        <div className={styles.companyName}>{companyName}</div>
+        <div className={styles.title}>{organization}</div>
         <div className={styles.position}>{position}</div>
-        <div className={styles.period}>{period}</div>
+        <div className={styles.period}>활동 기간: {period}</div>
       </div>
     </div>
   );

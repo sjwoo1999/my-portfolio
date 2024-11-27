@@ -8,6 +8,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box; /* 전체 크기 계산에 패딩을 포함하여 일관성 유지 */
+    width: 80%; /* 모든 화면에서 콘텐츠가 적절히 중앙 정렬되도록 설정 */
+    max-width: 1000px; /* 콘텐츠의 최대 너비를 설정하여 너무 넓어지지 않도록 함 */
+    margin: 2rem auto; /* 콘텐츠를 중앙 정렬하고 여백 추가 */
 }
 
 /* 모바일 환경 스타일 */
@@ -15,6 +19,12 @@
     .content {
         padding: 0.5rem;
         align-items: center; /* 카드들을 모바일에서 중앙 정렬 */
+        width: 90%; /* 모바일에서 약간 여유 있는 너비 */
+        margin: 1rem auto; /* 모바일에서 수평 및 수직 여백 추가 */
+    }
+
+    .title {
+        font-size: 1.5rem; /* 모바일에서 타이틀 크기 축소 */
     }
 }
 
@@ -22,63 +32,17 @@
 @media (min-width: 768px) {
     .content {
         padding: 2rem;
-        align-items: stretch; /* 태블릿/데스크탑에서는 카드들이 더 넓게 보이도록 설정 */
-        width: 70%;  /* 컨테이너의 너비를 조정하여 카드들이 여유롭게 펼쳐짐 */
+        align-items: center; /* 카드들이 중앙 정렬되도록 유지 */
+        width: 70%; /* 태블릿/데스크탑에서 넓이를 조정하여 가독성 향상 */
         max-width: 1000px; /* 최대 너비 설정 */
+        margin: 2rem auto; /* 콘텐츠 중앙 정렬 및 상하 간격 추가 */
     }
 
     .title {
-        font-size: 2rem;
+        font-size: 2rem; /* 타이틀의 폰트 크기 설정 */
     }
 
     .list {
-        font-size: 1rem;
-    }
-}
-
-
-/* EducationCard.module.css */
-
-/* 공통 카드 스타일 */
-.card {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    border: 1px solid var(--accent-color);
-    border-radius: 10px;
-    background-color: white;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-/* 카드 호버 효과 */
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* 모바일 환경 스타일 */
-@media (max-width: 600px) {
-    .card {
-        width: 90%;
-        max-width: 400px; /* 모바일에서 최대 너비 설정 */
-    }
-}
-
-/* 태블릿 및 데스크탑 스타일 */
-@media (min-width: 768px) {
-    .card {
-        width: 100%; /* PC에서는 전체 너비 사용 */
-        max-width: none; /* 너비 제한 해제 */
-        margin-bottom: 1.5rem;
-    }
-
-    .logoContainer {
-        width: 100px; /* 로고 크기 조정 */
-        height: 100px;
-    }
-
-    .info {
-        padding-left: 1rem; /* PC 환경에서 좀 더 여유 있는 padding 추가 */
+        font-size: 1rem; /* 리스트의 폰트 크기 설정 */
     }
 }
