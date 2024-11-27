@@ -10,7 +10,7 @@ interface TabContentProps {
   activeYear: string;
 }
 
-interface Activity {
+interface Career {
   organization: string;
   position: string;
   year: string;  // 연도 정보
@@ -28,7 +28,7 @@ interface Award {
 
 const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
   // 연도별 활동 목록 (수료와 참여를 분리하여 수정된 활동 내용)
-  const activities: Record<string, Activity[]> = {
+  const careers: Record<string, Career[]> = {
     '2022': [
       { organization: '멋쟁이사자처럼 대학 고려대학교(세종) 부원', position: '활동', year: '2022', certificate:'/images/Career/2022/' },
       { organization: '고려대학교 메타버스 학회 유나이티드', position: '수료', year: '2022', certificate:'/images/Career/2022/' },
@@ -93,15 +93,15 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
   };
 
   // 연도별 필터링을 적용한 활동 및 수상 경력 목록 가져오기
-  const getFilteredActivities = () => {
+  const getFilteredCareers = () => {
     if (activeYear === '전체') {
-      return Object.entries(activities)
-        .flatMap(([year, activities]) =>
-          activities.map((activity) => ({ ...activity }))
+      return Object.entries(careers)
+        .flatMap(([year, careers]) =>
+          careers.map((career) => ({ ...career }))
         )
         .reverse(); // 내림차순 정렬
     }
-    return activities[activeYear]?.map((activity) => ({ ...activity })).reverse() || [];
+    return careers[activeYear]?.map((career) => ({ ...career })).reverse() || [];
   };
 
   const getFilteredAwards = () => {
@@ -115,7 +115,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
     return awards[activeYear]?.map((award) => ({ ...award })).reverse() || [];
   };
 
-  const filteredActivities = getFilteredActivities();
+  const filteredCareers = getFilteredCareers();
   const filteredAwards = getFilteredAwards();
 
   return (
@@ -141,14 +141,14 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
       {activeTab === 'career' && (
         <>
           <h2 className={styles.title}>활동 이력</h2>
-          {filteredActivities.map((activity, index) => (
+          {filteredCareers.map((career, index) => (
             <CareerCard
-              key={`${activity.year}-${index}`}
-              year={activity.year}
-              organization={activity.organization}
-              position={activity.position}
-              period={activity.year}
-              certificate={activity.certificate}
+              key={`${career.year}-${index}`}
+              year={career.year}
+              organization={career.organization}
+              position={career.position}
+              period={career.year}
+              certificate={career.certificate}
             />
           ))}
         </>
