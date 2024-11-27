@@ -10,6 +10,7 @@ interface CareerCardProps {
 }
 
 const CareerCard: React.FC<CareerCardProps> = ({ year, organization, position, period, certificate }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (
     <div className={styles.card}>
       <div className={styles.certificateContainer}>
