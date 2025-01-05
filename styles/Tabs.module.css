@@ -1,83 +1,60 @@
-/* Tabs.module.css */
-
 .nav {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.75rem; /* 탭 버튼 간의 간격 설정을 줄임 */
+    gap: 0.5rem; /* 탭 버튼 간의 간격 */
     margin-top: 1rem;
-    margin-bottom: 0.5rem; /* 첫 번째 줄과 두 번째 줄 사이의 간격 추가 */
-    width: 100%;
+    margin-bottom: 0.5rem;
+    flex-wrap: nowrap; /* 한 줄로 강제 배치 */
+    overflow-x: auto; /* 화면이 좁을 경우 스크롤 가능 */
+    white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
 }
 
 .yearNav {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem; /* 연도 버튼 간의 간격 줄임 */
+    gap: 0.5rem; /* 연도 버튼 간의 간격 */
     margin-top: 0.5rem;
-    width: 100%;
+    flex-wrap: nowrap; /* 한 줄로 강제 배치 */
+    overflow-x: auto; /* 화면이 좁을 경우 스크롤 가능 */
+    white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
 }
 
-/* 기본 탭 스타일 */
-.tabButton {
-    padding: 0.5rem 0.75rem; /* 내부 패딩을 줄여 버튼 크기 조정 */
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    background-color: transparent;
-    border-radius: 30px;
-    font-size: 0.875rem; /* 폰트 크기 줄임 */
-    font-family: var(--font-family);
+/* 기본 탭 버튼 스타일 */
+.tabButton, .yearButton {
+    padding: 0.4rem 0.8rem; /* 버튼 크기 조정 */
+    border: 2px solid #dc143c;
+    color: #dc143c;
+    background-color: #ffffff;
+    border-radius: 20px;
+    font-size: 0.875rem; /* 폰트 크기 조정 */
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    margin-right: 0.5rem; /* 탭 버튼 간의 간격 조정 */
-    margin-bottom: 0.25rem; /* 두 번째 줄과의 간격 줄임 */
-}
-
-.yearButton {
-    padding: 0.5rem 0.75rem; /* 내부 패딩을 줄여 버튼 크기 조정 */
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    background-color: transparent;
-    border-radius: 30px;
-    font-size: 0.875rem; /* 폰트 크기 줄임 */
-    font-family: var(--font-family);
-    transition: background-color 0.3s, color 0.3s;
-    margin-right: 0.5rem; /* 연도 버튼 간의 간격 조정 */
-    margin-bottom: 0.25rem; /* 두 번째 줄과의 간격 줄임 */
 }
 
 /* 활성화된 탭 버튼 스타일 */
 .active {
-    background-color: var(--accent-color);
+    background-color: #dc143c;
     color: #ffffff;
 }
 
-/* 탭 버튼 호버 효과 */
+/* 버튼 호버 효과 */
 .tabButton:hover, .yearButton:hover {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: #dc143c;
+    color: #ffffff;
 }
 
 /* 모바일 환경에서 중앙 정렬 및 간격 조정 */
 @media (max-width: 768px) {
-    .nav {
+    .nav, .yearNav {
         justify-content: center;
-        gap: 0.5rem; /* 모바일에서 탭 버튼 간 간격 조정 */
-        margin-bottom: 0.5rem; /* 모바일에서 탭 버튼과 연도 버튼 사이 간격 추가 */
+        gap: 0.25rem; /* 모바일에서 버튼 간 간격 줄임 */
     }
 
-    .yearNav {
-        display: flex; /* 모바일에서도 연도 버튼 보이도록 수정 */
+    .tabButton, .yearButton {
+        padding: 0.35rem 0.6rem; /* 모바일에서 버튼 크기 줄임 */
+        font-size: 0.8rem; /* 폰트 크기 줄임 */
     }
-}
-
-/* 학력 탭에서 연도 버튼 숨김 처리 */
-.educationTab ~ .yearNav {
-    display: none;
-}
-
-.nav.educationTab {
-    margin-bottom: 0; /* 학력 탭에서 아래 여백 제거 */
 }

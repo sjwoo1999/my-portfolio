@@ -25,14 +25,14 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
 
   return (
     <>
-      {/* 탭 버튼들 */}
+      {/* 탭 버튼 */}
       <nav className={styles.nav}>
         {tabItems.map((item) => (
           <button
             key={item.key}
             onClick={() => {
               setActiveTab(item.key);
-              setActiveYear('전체'); // 탭을 변경할 때 연도를 '전체'로 리셋
+              setActiveYear('전체'); // 탭 변경 시 연도를 초기화
             }}
             className={`${styles.tabButton} ${activeTab === item.key ? styles.active : ''}`}
           >
@@ -41,7 +41,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
         ))}
       </nav>
 
-      {/* 학력 탭에서는 연도 버튼 숨김 */}
+      {/* 연도 버튼 */}
       {activeTab !== 'education' && (
         <nav className={styles.yearNav}>
           {yearItems.map((item) => (
