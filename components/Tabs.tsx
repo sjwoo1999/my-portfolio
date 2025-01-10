@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Tabs.module.css';
 
 interface TabsProps {
@@ -9,11 +9,22 @@ interface TabsProps {
 }
 
 const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setActiveYear }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true); // 컴포넌트가 브라우저에 마운트된 후에만 렌더링 허용
+  }, []);
+
+  if (!isMounted) {
+    return null; // SSR에서 초기 렌더링 방지
+  }
+
   const tabItems = [
     { key: 'education', label: '학력' },
     { key: 'career', label: '활동 이력' },
     { key: 'awards', label: '수상 경력' },
     { key: 'projects', label: '프로젝트' },
+    { key: 'news', label: 'News' }, // News 추가
   ];
 
   const yearItems = [
@@ -32,7 +43,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
             key={item.key}
             onClick={() => {
               setActiveTab(item.key);
-              setActiveYear('전체'); // 탭 변경 시 연도를 초기화
+              setActiveYear('전체'); // 탭 변경 시 연도 초기화
             }}
             className={`${styles.tabButton} ${activeTab === item.key ? styles.active : ''}`}
           >
@@ -42,7 +53,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
       </nav>
 
       {/* 연도 버튼 */}
-      {activeTab !== 'education' && (
+      {activeTab !== 'education' && activeTab !== 'news' && ( // News 탭에서는 연도 버튼 제외
         <nav className={styles.yearNav}>
           {yearItems.map((item) => (
             <button
