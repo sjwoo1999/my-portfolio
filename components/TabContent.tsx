@@ -36,7 +36,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, awardsSi
       { organization: '[멋쟁이사자처럼 X 넥슨] MOD Supporters Hackathon', position: '참여', year: '2022', certificate:'/images/Career/2022/msw-supporters-hakcathon.png' },
       { organization: '[멋쟁이사자처럼 X 넥슨] MapleStory Worlds Super Hackathon', position: '참여', year: '2022', certificate:'/images/Career/2022/msw-super-hackathon.png' },
       { organization: '[멋쟁이사자처럼 X 넥슨] Supporters/Super Hackathon', position: '참여', year: '2022', certificate:'/images/Career/2022/msw-master.png'},
-      { organization: '고려대학교 컴퓨터융합소프트웨어학과 학과 소모임 KUDING 운영진', position: '활동', year: '2022', certificate:'/images/Career/2022/' },
+      { organization: '고려대학교 컴퓨터융합소프트웨어학과 학과 소모임 KUDING 운영진', position: '활동', year: '2022', certificate:'/images/Career/2022/kuding.png' },
     ],
     '2023': [
       { organization: '고려대학교 메타버스 학회 유나이티드', position: '수료', year: '2023', certificate:'/images/Career/2023/united.png' },
