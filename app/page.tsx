@@ -34,10 +34,7 @@ const Page = () => {
         <div className={styles.loadingScreen}>
           <div className={styles.loadingAnimation}>
             <div className={styles.circle}></div>
-            <h1 className={styles.loadingText}>
-              <span>Welcome to</span> <br />
-              SJWoo's Portfolio
-            </h1>
+            <h1>Welcome to SJWoo&apos;s Portfolio</h1>
           </div>
         </div>
       ) : (
