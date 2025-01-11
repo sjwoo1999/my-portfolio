@@ -1,15 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tabs from "../components/Tabs";
 import TabContent from "../components/TabContent";
 import Header from "../components/Header";
 import styles from "../styles/Home.module.css";
 
-const HomePage = () => {
-  // 초기값을 직접 지정해 렌더링 동기화
+const Page = () => {
   const [activeTab, setActiveTab] = useState<string>("education");
   const [activeYear, setActiveYear] = useState<string>("전체");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const awardsSizes = {
     "/images/Award/2022/award_kuding_2022.png": { width: 300, height: 400 },
@@ -25,21 +30,35 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
-      <Header />
-      <Tabs
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        activeYear={activeYear}
-        setActiveYear={setActiveYear}
-      />
-      <TabContent
-        activeTab={activeTab}
-        activeYear={activeYear}
-        awardsSizes={awardsSizes}
-        careerSizes={careerSizes}
-      />
+      {isLoading ? (
+        <div className={styles.loadingScreen}>
+          <div className={styles.loadingAnimation}>
+            <div className={styles.circle}></div>
+            <h1 className={styles.loadingText}>
+              <span>Welcome to</span> <br />
+              SJWoo's Portfolio
+            </h1>
+          </div>
+        </div>
+      ) : (
+        <>
+          <Header />
+          <Tabs
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            activeYear={activeYear}
+            setActiveYear={setActiveYear}
+          />
+          <TabContent
+            activeTab={activeTab}
+            activeYear={activeYear}
+            awardsSizes={awardsSizes}
+            careerSizes={careerSizes}
+          />
+        </>
+      )}
     </div>
   );
 };
 
-export default HomePage;
+export default Page;
