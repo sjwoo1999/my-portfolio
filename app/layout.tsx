@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"; // Vercel Analytics 추가
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -7,6 +8,7 @@ const geistSans = localFont({
   weight: "100 900",
   display: "swap",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -14,6 +16,7 @@ const geistMono = localFont({
   display: "swap",
 });
 
+// metadata를 서버에서 사용하는 기본 방식으로 유지
 export const metadata = {
   title: "우성종 포트폴리오",
   description: "우성종 포트폴리오",
@@ -35,7 +38,10 @@ export default function RootLayout({
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics /> {/* Vercel Analytics 추가 */}
+      </body>
     </html>
   );
 }
