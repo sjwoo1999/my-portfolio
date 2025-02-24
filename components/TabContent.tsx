@@ -58,7 +58,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, awardsSi
       { organization: '멋쟁이사자처럼 대학 12기 고려대학교(세종) 운영진', position: '활동', year: '2024', certificate:'/images/Career/2024/likelion.png' },
       { organization: '언더독 레볼루션 창업 트랙 운영진', position: '활동', year: '2024', certificate:'/images/Career/2024/udr.png' },
       { organization: '구름톤 유니브 2기 고려대학교(세종) 대표', position: '활동', year: '2024', certificate:'/images/Career/2024/9oormthon_2nd.png' },
-      { organization: '구름톤 유니브 3기 고려대학교(세종) 대표', position: '활동', year: '2024', certificate:'/images/Career/2024/' },
+      { organization: '구름톤 유니브 3기 고려대학교(세종) 대표', position: '활동', year: '2024', certificate:'/images/Career/2024/9oormthon_3rd.png' },
       { organization: '스파르타코딩클럽 내일배움캠프 Node.js 4기', position: '수료', year: '2024', certificate:'/images/Career/2024/sparta.png' },
       { organization: '멋쟁이사자처럼 대학 12기 아이디어톤', position: '참여', year: '2024', certificate:'/images/Career/2024/likelion.png' },
       { organization: '전국 대학생 창업 네트워크 Brave - 우주유영 TF', position: '활동', year: '2024', certificate:'/images/Career/2024/spacewalk.png' },
