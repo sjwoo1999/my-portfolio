@@ -9,16 +9,16 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ logo, projectName, description, period }) => {
-  const defaultImage = '/images/default.png';
+  // const defaultImage = '/images/default.png';
 
   return (
     <div className={styles.card}>
       <div className={styles.logoContainer}>
-        <img
+        {/*<img
           src={logo || defaultImage}
           alt={`${projectName} logo`}
           className={styles.logo}
-        />
+        /> */}
       </div>
       <div className={styles.info}>
         <div className={styles.projectName}>{projectName}</div>

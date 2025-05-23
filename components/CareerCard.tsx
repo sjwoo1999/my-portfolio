@@ -16,23 +16,23 @@ const CareerCard: React.FC<CareerCardProps> = ({
   organization,
   position,
   period,
-  certificate,
+  //certificate,
   width,
   height,
 }) => {
-  const defaultImage = "/images/default.png";
+  // const defaultImage = "/images/default.png";
 
   return (
     <div className={styles.card}>
       <div className={styles.certificateContainer}>
-      <img
+      {/*<img
         src={certificate && certificate.trim() !== "" ? certificate : defaultImage}
         alt={`${organization} certificate`}
         onError={(e) => (e.currentTarget.src = defaultImage)} // 이미지 로드 실패 시 기본 이미지로 대체
         width={width || 300} // 기본 너비
         height={height || 200} // 기본 높이
         className={styles.certificateImage}
-      />
+      /> */}
       </div>
       <div className={styles.info}>
         <div className={styles.title}>{organization}</div>

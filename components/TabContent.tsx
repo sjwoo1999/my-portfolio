@@ -203,7 +203,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, awardsSi
           organization={career.organization}
           position={career.position}
           period={career.year}
-          certificate={career.certificate || "/images/default.png"} // 기본 이미지 설정
+          //certificate={career.certificate || "/images/default.png"} // 기본 이미지 설정
           width={size.width}
           height={size.height}
         />
@@ -223,7 +223,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, awardsSi
           title={award.title}
           award={award.award}
           organization={award.organization}
-          certificate={award.certificate || "/images/default.png"} // 기본 이미지 설정
+          // certificate={award.certificate || "/images/default.png"} // 기본 이미지 설정
           awardDate={award.awardDate}
           width={size.width}
           height={size.height}

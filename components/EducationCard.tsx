@@ -9,19 +9,19 @@ interface EducationCardProps {
 }
 
 const EducationCard: React.FC<EducationCardProps> = ({ logo, schoolName, major, period }) => {
-  const defaultImage = '/images/default.png';
+  // const defaultImage = '/images/default.png';
 
   return (
     <div className={styles.card}>
       <div className={styles.logoContainer}>
         <div className={styles.logoBorder}>
-          <Image
+          {/*<Image
             src={logo || defaultImage}
             alt={`${schoolName} logo`}
             className={styles.logo}
             width={60} // 적절한 크기 설정
             height={60}
-          />
+          /> */}
         </div>
       </div>
       <div className={styles.info}>

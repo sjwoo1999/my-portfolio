@@ -21,18 +21,18 @@ const AwardCard: React.FC<AwardCardProps> = ({
   width,
   height,
 }) => {
-  const defaultImage = "/images/default.png";
+  //const defaultImage = "/images/default.png";
 
   return (
     <div className={styles.card}>
       <div className={styles.certificateContainer}>
-        <Image
+        {/*<Image
           src={certificate && certificate.trim() ? certificate : defaultImage} // 조건 개선
           alt={`${award} certificate`}
           width={width || 300} // 기본 너비 제공
           height={height || 200} // 기본 높이 제공
           className={styles.certificateImage}
-        />
+        /> */}
       </div>
       <div className={styles.info}>
         <div className={styles.title}>{title}</div>
