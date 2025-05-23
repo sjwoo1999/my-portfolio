@@ -6,7 +6,7 @@ interface CareerCardProps {
   organization: string;
   position: string;
   period: string;
-  certificate: string;
+  // certificate: string;
   width?: number; // 추가
   height?: number; // 추가
 }
