@@ -5,19 +5,112 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #64748b;
+  --accent: #f59e0b;
+  --success: #22c55e;
+  --error: #ef4444;
+  --card-bg: #f8fafc;
+  --card-border: #e2e8f0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #94a3b8;
+    --accent: #fbbf24;
+    --success: #4ade80;
+    --error: #f87171;
+    --card-bg: #1e293b;
+    --card-border: #334155;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply antialiased;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)];
+  }
+
+  .btn-secondary {
+    @apply bg-[var(--secondary)] text-white hover:opacity-90;
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Loading Animation */
+.loading-screen {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-[var(--background)];
+}
+
+.loading-animation {
+  @apply flex flex-col items-center gap-4;
+}
+
+.loading-circle {
+  @apply h-16 w-16 animate-spin rounded-full border-4 border-[var(--primary)] border-t-transparent;
+}
+
+/* Smooth Transitions */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
 }
 
 /* 편지봉투 애니메이션 */

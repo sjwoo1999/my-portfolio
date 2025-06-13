@@ -1,45 +1,47 @@
+'use client';
+
 import React from 'react';
-import styles from '../styles/CareerCard.module.css';
+import { motion } from 'framer-motion';
 
 interface CareerCardProps {
-  year: string;
-  organization: string;
+  company: string;
   position: string;
   period: string;
-  // certificate: string;
-  width?: number; // 추가
-  height?: number; // 추가
+  description: string;
 }
 
 const CareerCard: React.FC<CareerCardProps> = ({
-  year,
-  organization,
+  company,
   position,
   period,
-  //certificate,
-  width,
-  height,
+  description,
 }) => {
-  // const defaultImage = "/images/default.png";
-
   return (
-    <div className={styles.card}>
-      <div className={styles.certificateContainer}>
-      {/*<img
-        src={certificate && certificate.trim() !== "" ? certificate : defaultImage}
-        alt={`${organization} certificate`}
-        onError={(e) => (e.currentTarget.src = defaultImage)} // 이미지 로드 실패 시 기본 이미지로 대체
-        width={width || 300} // 기본 너비
-        height={height || 200} // 기본 높이
-        className={styles.certificateImage}
-      /> */}
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      className="relative overflow-hidden rounded-xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-2xl p-6"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 opacity-50" />
+      <div className="relative z-10">
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+              {company}
+            </h3>
+            <p className="text-slate-600 dark:text-slate-300 mt-1">{position}</p>
+          </div>
+          <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            {period}
+          </div>
+        </div>
+        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+          {description}
+        </p>
       </div>
-      <div className={styles.info}>
-        <div className={styles.title}>{organization}</div>
-        <div className={styles.position}>{position}</div>
-        <div className={styles.period}>활동 기간: {period}</div>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 
