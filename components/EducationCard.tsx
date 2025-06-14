@@ -10,6 +10,7 @@ interface EducationCardProps {
   major: string;
   period: string;
   location: string;
+  order?: 'campusFirst' | 'majorTypeFirst';
 }
 
 const EducationCard: React.FC<EducationCardProps> = ({
@@ -19,6 +20,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
   major,
   period,
   location,
+  order = 'campusFirst',
 }) => {
   return (
     <motion.div
@@ -27,10 +29,17 @@ const EducationCard: React.FC<EducationCardProps> = ({
     >
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 opacity-50" />
       <div className="relative z-10">
-        <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-1">{majorType}</div>
-        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
-          {campus}
-        </h3>
+        {order === 'campusFirst' ? (
+          <>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">{campus}</h3>
+            <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-1">{majorType}</div>
+          </>
+        ) : (
+          <>
+            <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-1">{majorType}</div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">{campus}</h3>
+          </>
+        )}
         <div className="text-base text-slate-700 dark:text-slate-200 mb-2">
           {college} · {major}
         </div>

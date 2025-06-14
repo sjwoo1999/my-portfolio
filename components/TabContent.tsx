@@ -187,7 +187,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
       majorType: '제1전공',
       college: '과학기술대학',
       major: '컴퓨터융합소프트웨어학과',
-      period: '2021 - 2025',
+      period: '2019.03 - 2025.12',
       location: '세종특별자치시',
     },
     {
@@ -195,7 +195,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
       majorType: '제2전공',
       college: '공과대학',
       major: '기술창업 융합전공',
-      period: '2021 - 2025',
+      period: '2025.03 - 2025.12',
       location: '서울특별시',
     },
   ];
@@ -215,7 +215,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
           {activeTab === 'education' && (
             <>
               <div className="mb-4 w-fit px-6 py-2 rounded-2xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md font-bold text-xl text-slate-800 dark:text-slate-100">
-                🎓 학력
+                학력
               </div>
               <div className="grid gap-6 md:grid-cols-2">
                 {educations.map((edu, index) => (
@@ -232,6 +232,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
                       major={edu.major}
                       period={edu.period}
                       location={edu.location}
+                      order="campusFirst"
                     />
                   </motion.div>
                 ))}
@@ -242,7 +243,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
           {activeTab === 'career' && (
             <>
               <div className="mb-4 w-fit px-6 py-2 rounded-2xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md font-bold text-xl text-slate-800 dark:text-slate-100">
-                💼 활동 이력
+                활동 이력
               </div>
               <div className="space-y-6">
                 {filteredCareers.map((career, index) => (
@@ -267,7 +268,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
           {activeTab === 'awards' && (
             <>
               <div className="mb-4 w-fit px-6 py-2 rounded-2xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md font-bold text-xl text-slate-800 dark:text-slate-100">
-                🏆 수상 경력
+                수상 이력
               </div>
               <div className="grid gap-6 md:grid-cols-2">
                 {filteredAwards.map((award, index) => (
@@ -293,7 +294,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
           {activeTab === 'projects' && (
             <>
               <div className="mb-4 w-fit px-6 py-2 rounded-2xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md font-bold text-xl text-slate-800 dark:text-slate-100">
-                🚀 프로젝트
+                프로젝트
               </div>
               <div className="grid gap-6 md:grid-cols-2">
                 {/* 실제 프로젝트 데이터로 교체 필요 */}
@@ -316,7 +317,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
           {activeTab === 'news' && (
             <>
               <div className="mb-4 w-fit px-6 py-2 rounded-2xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md font-bold text-xl text-slate-800 dark:text-slate-100">
-                📰 News
+                뉴스
               </div>
               <motion.div
                 initial={{ opacity: 0 }}
