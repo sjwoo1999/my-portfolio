@@ -200,6 +200,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear }) => {
     },
   ];
 
+  
   return (
     <div className="mt-8">
       <AnimatePresence mode="wait">
