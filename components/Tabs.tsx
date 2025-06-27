@@ -49,6 +49,12 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
             onClick={() => {
               setActiveTab(item.key);
               setActiveYear('전체');
+              const section = document.getElementById(item.key);
+              if (section) {
+                const yOffset = -100; // 헤더/탭 높이에 맞게 조정
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
             }}
             className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md bg-white/30 dark:bg-slate-800/40 ${
               activeTab === item.key
