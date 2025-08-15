@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Tabs from "../components/Tabs";
 import TabContent from "../components/TabContent";
 import Header from "../components/Header";
+import NoSSR from "../components/NoSSR";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Page = () => {
@@ -21,39 +22,74 @@ const Page = () => {
 
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-white/80 to-slate-200/80 dark:from-slate-900/80 dark:to-slate-800/80 overflow-hidden">
-      {/* subtle grid pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 z-0 before:content-[''] before:absolute before:inset-0 before:bg-[url('/grid.svg')] before:opacity-10" />
+      {/* subtle pattern overlay */}
+      <div className="pointer-events-none absolute inset-0 z-0 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-transparent before:via-slate-100/5 before:to-transparent before:opacity-20" />
       <div className="container mx-auto px-4 py-8 relative z-10">
-        {hasMounted && (
-          <div className="flex justify-end mb-4">
-            <button
-              className={`rounded-full px-5 py-2 font-semibold border shadow transition
-                ${language === 'ko'
-                  ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border-slate-800'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
-              onClick={() => setLanguage('ko')}
-            >
-              한국어
-            </button>
-            <button
-              className={`rounded-full px-5 py-2 font-semibold border shadow transition
-                ${language === 'en'
-                  ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border-slate-800'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
-              onClick={() => setLanguage('en')}
-            >
-              English
-            </button>
+        <div className="flex justify-end mb-4">
+          <button
+            className={`rounded-full px-5 py-2 font-semibold border shadow transition
+              ${language === 'ko'
+                ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border-slate-800'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+            onClick={() => setLanguage('ko')}
+            suppressHydrationWarning
+          >
+            한국어
+          </button>
+          <button
+            className={`rounded-full px-5 py-2 font-semibold border shadow transition
+              ${language === 'en'
+                ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border-slate-800'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+            onClick={() => setLanguage('en')}
+            suppressHydrationWarning
+          >
+            English
+          </button>
+        </div>
+        <NoSSR fallback={
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 shadow-xl p-8 mb-8">
+            <div className="relative z-10 flex justify-between items-start">
+              <div className="flex flex-col gap-4">
+                <h1 className="text-4xl font-extrabold text-white drop-shadow-lg">우성종</h1>
+                <div className="text-lg font-medium text-slate-100">
+                  백엔드 개발자, 창업가, 그리고 도전가.
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-        <Header />
+        }>
+          <Header />
+        </NoSSR>
         <div className="mt-8 space-y-8">
-          <Tabs
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            activeYear={activeYear}
-            setActiveYear={setActiveYear}
-          />
+          <NoSSR fallback={
+            <div className="space-y-4">
+              <nav className="flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-slate-800/40 p-2 shadow-sm">
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg">
+                  🎓 학력
+                </button>
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                  💼 활동 이력
+                </button>
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                  🏆 수상 경력
+                </button>
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                  🚀 프로젝트
+                </button>
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                  📰 News
+                </button>
+              </nav>
+            </div>
+          }>
+            <Tabs
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              activeYear={activeYear}
+              setActiveYear={setActiveYear}
+            />
+          </NoSSR>
           <TabContent
             activeTab={activeTab}
             activeYear={activeYear}

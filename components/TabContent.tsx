@@ -242,7 +242,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
   }, []);
 
   useEffect(() => {
-    if (!hasMounted) return;
+    if (!hasMounted || typeof window === 'undefined') return;
     const sections = [
       { ref: educationRef, key: 'education' },
       { ref: careerRef, key: 'career' },

@@ -38,7 +38,7 @@ export default function RootLayout({
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <Analytics /> {/* Vercel Analytics 추가 */}
       </body>
