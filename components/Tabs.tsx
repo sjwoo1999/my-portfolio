@@ -42,6 +42,8 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-slate-800/40 p-2 shadow-sm"
+        role="tablist"
+        aria-label="Profile sections"
       >
         {tabItems.map((item) => (
           <motion.button
@@ -63,6 +65,9 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
                 ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg'
                 : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
             }`}
+            role="tab"
+            aria-selected={activeTab === item.key}
+            tabIndex={activeTab === item.key ? 0 : -1}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

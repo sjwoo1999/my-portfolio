@@ -35,7 +35,7 @@
     @apply antialiased;
     color: var(--foreground);
     background: var(--background);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {

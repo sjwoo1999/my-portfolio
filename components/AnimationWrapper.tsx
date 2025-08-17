@@ -17,7 +17,7 @@ export default function AnimationWrapper({
   return (
     <div>
       {showAnimation ? (
-        <div className="envelope-animation">
+        <div className="envelopeAnimation">
           {/* 여기에 편지봉투 또는 초기 애니메이션 컴포넌트를 추가하세요 */}
           <div className="envelope">📩</div>
         </div>
