@@ -9,6 +9,7 @@
   --primary-dark: #1d4ed8;
   --secondary: #64748b;
   --accent: #f59e0b;
+  --accent-color: var(--accent);
   --success: #22c55e;
   --error: #ef4444;
   --card-bg: #f8fafc;
@@ -23,6 +24,7 @@
     --primary-dark: #2563eb;
     --secondary: #94a3b8;
     --accent: #fbbf24;
+    --accent-color: var(--accent);
     --success: #4ade80;
     --error: #f87171;
     --card-bg: #1e293b;

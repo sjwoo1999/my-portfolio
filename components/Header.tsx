@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-import Particles from 'react-tsparticles';
+import dynamic from 'next/dynamic';
+const Particles = dynamic(() => import('react-tsparticles'), { ssr: false });
 
 const Header = () => {
   const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
@@ -31,10 +32,10 @@ const Header = () => {
             interactivity: { events: { onClick: { enable: false }, onHover: { enable: false } }, modes: {} },
             particles: {
               color: { value: '#ffffff' },
-              links: { enable: true, color: '#ffffff', opacity: 0.1 },
-              move: { enable: true, speed: 0.5 },
-              number: { value: 40 },
-              opacity: { value: 0.2 },
+              links: { enable: true, color: '#ffffff', opacity: 0.08 },
+              move: { enable: true, speed: typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.4 },
+              number: { value: 30 },
+              opacity: { value: 0.15 },
               shape: { type: 'circle' },
               size: { value: 2 },
             },
