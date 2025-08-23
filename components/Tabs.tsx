@@ -37,11 +37,11 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
   ];
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 sticky top-0 z-20 backdrop-blur supports-backdrop-blur:bg-white/40 dark:supports-backdrop-blur:bg-slate-900/40">
       <motion.nav
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-slate-800/40 p-2 shadow-sm"
+        className="relative flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-slate-800/40 p-2 shadow-sm"
         role="tablist"
         aria-label="Profile sections"
       >
@@ -75,6 +75,16 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
             {item.label}
           </motion.button>
         ))}
+        {/* underline indicator */}
+        <motion.div
+          layoutId="tabs-underline"
+          className="absolute bottom-0 h-0.5 bg-slate-900 dark:bg-slate-100 rounded"
+          style={{
+            left: 0,
+            width: 0,
+          }}
+          transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+        />
       </motion.nav>
 
       {activeTab !== 'education' && activeTab !== 'news' && (
@@ -88,7 +98,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
             <motion.button
               key={item.key}
               onClick={() => setActiveYear(item.key)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md bg-white/30 dark:bg-slate-800/40 ${
+              className={`relative overflow-hidden rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md bg-white/30 dark:bg-slate-800/40 ${
                 activeYear === item.key
                   ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg'
                   : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
@@ -96,6 +106,14 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              {activeYear === item.key && (
+                <motion.span
+                  layoutId="year-highlight"
+                  className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-800 to-slate-900"
+                  style={{ borderRadius: 9999 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+                />
+              )}
               {item.label}
             </motion.button>
           ))}

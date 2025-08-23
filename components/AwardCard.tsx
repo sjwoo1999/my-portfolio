@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { createRevealVariants } from '../utils/motion';
 
 interface AwardCardProps {
   title: string;
@@ -18,8 +19,14 @@ const AwardCard: React.FC<AwardCardProps> = ({
   description,
   year,
 }) => {
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveal = createRevealVariants(prefersReduced);
   return (
     <motion.div
+      variants={reveal}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       whileHover={{ scale: 1.03 }}
       className="relative overflow-hidden rounded-xl bg-white/30 dark:bg-slate-800/40 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-lg transition-all duration-300 hover:shadow-2xl p-6"
     >
@@ -30,22 +37,27 @@ const AwardCard: React.FC<AwardCardProps> = ({
             <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">
               {title}
             </h3>
-            <p className="text-slate-600 dark:text-slate-300 mt-1">{organization}</p>
+            <motion.p className="text-slate-600 dark:text-slate-300 mt-1" variants={reveal}>{organization}</motion.p>
           </div>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200">
+          <motion.span
+            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200"
+            variants={reveal}
+            initial={{ scale: 0.96, opacity: 0.95 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: prefersReduced ? 0 : 0.16 }}
+          >
             {year}
-          </span>
+          </motion.span>
         </div>
         <div className="space-y-2">
           <div className="flex items-center text-sm text-slate-500 dark:text-slate-400">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <motion.svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" whileHover={{ rotate: prefersReduced ? 0 : 8 }} transition={{ duration: 0.12 }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+            </motion.svg>
             {date}
           </div>
-          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-            {description}
-          </p>
+          <motion.p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed" variants={reveal}>{description}</motion.p>
         </div>
       </div>
     </motion.div>

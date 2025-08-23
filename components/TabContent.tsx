@@ -7,7 +7,9 @@ import CareerCard from './CareerCard';
 import AwardCard from './AwardCard';
 import ProjectCard from './ProjectCard';
 import NewsList from './NewsList';
+import SummarySection from './SummarySection';
 import styles from '../styles/TabContent.module.css';
+import { createRevealVariants, createStaggerContainer } from '../utils/motion';
 
 interface TabContentProps {
   activeTab: string;
@@ -203,11 +205,9 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
   const filteredCareers = getFilteredCareers();
   const filteredAwards = getFilteredAwards();
 
-  const tabVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
-  };
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const containerVariants = createStaggerContainer(prefersReduced);
+  const reveal = createRevealVariants(prefersReduced);
 
   // 학력 데이터 예시 (세종캠퍼스 왼쪽, 서울캠퍼스 오른쪽)
   const educations = [
@@ -269,8 +269,8 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
   if (!hasMounted) return null;
 
   return (
-    <div className="mt-8 space-y-16">
-      <section id="education" ref={educationRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none">
+    <motion.div className="mt-8 space-y-16" variants={containerVariants} initial="visible" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+      <motion.section id="education" ref={educationRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '학력' : 'Education'}
         </h2>
@@ -278,9 +278,8 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
           {educations.map((edu, index) => (
             <motion.div
               key={`${edu.campus.ko}-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              variants={reveal}
+              transition={{ delay: prefersReduced ? 0 : index * 0.06 }}
             >
               <EducationCard
                 campus={edu.campus[language]}
@@ -294,18 +293,26 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
             </motion.div>
           ))}
         </div>
-      </section>
-      <section id="career" ref={careerRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none">
+      </motion.section>
+      <motion.section id="career" ref={careerRef} className="relative scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '활동 이력' : 'Activities & Experience'}
         </h2>
+        <motion.span
+          aria-hidden
+          className="absolute left-3 top-28 bottom-8 w-0.5 bg-slate-200 dark:bg-slate-700"
+          style={{ transformOrigin: 'top' }}
+          initial={{ scaleY: prefersReduced ? 1 : 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: prefersReduced ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
+        />
         <div className="space-y-6">
           {getFilteredCareers().map((career, index) => (
             <motion.div
               key={`${career.year.ko || career.year}-${index}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
+              variants={reveal}
+              transition={{ delay: prefersReduced ? 0 : index * 0.06 }}
             >
               <CareerCard
                 company={career.organization[language]}
@@ -316,8 +323,8 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
             </motion.div>
           ))}
         </div>
-      </section>
-      <section id="awards" ref={awardsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none">
+      </motion.section>
+      <motion.section id="awards" ref={awardsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '수상 이력' : 'Awards'}
         </h2>
@@ -325,9 +332,8 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
           {getFilteredAwards().map((award, index) => (
             <motion.div
               key={`${award.year.ko || award.year}-${index}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
+              variants={reveal}
+              transition={{ delay: prefersReduced ? 0 : index * 0.06 }}
             >
               <AwardCard
                 title={award.title[language]}
@@ -339,18 +345,14 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
             </motion.div>
           ))}
         </div>
-      </section>
-      <section id="projects" ref={projectsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none">
+      </motion.section>
+      <motion.section id="projects" ref={projectsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '프로젝트' : 'Projects'}
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           {/* 실제 프로젝트 데이터로 교체 필요 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
+          <motion.div variants={reveal}>
             <ProjectCard
               title={language === 'ko' ? '샘플 프로젝트' : 'Sample Project'}
               description={language === 'ko' ? '이것은 샘플 프로젝트입니다.' : 'This is a sample project.'}
@@ -359,8 +361,8 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
             />
           </motion.div>
         </div>
-      </section>
-      <section id="news" ref={newsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none">
+      </motion.section>
+      <motion.section id="news" ref={newsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '뉴스' : 'News'}
         </h2>
@@ -374,8 +376,21 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
             link: news.link
           }))} />
         </motion.div>
-      </section>
-    </div>
+      </motion.section>
+      {/* Summary Section (append-only) */}
+      <motion.section id="summary" className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+          {language === 'ko' ? '요약' : 'Summary'}
+        </h2>
+        <SummarySection
+          language={language}
+          activeYear={activeYear}
+          careersCount={getFilteredCareers().length}
+          awardsCount={getFilteredAwards().length}
+          projectsCount={1}
+        />
+      </motion.section>
+    </motion.div>
   );
 };
 
