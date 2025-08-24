@@ -269,8 +269,8 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
   if (!hasMounted) return null;
 
   return (
-    <motion.div className="mt-8 space-y-16" variants={containerVariants} initial="visible" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <motion.section id="education" ref={educationRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+    <motion.div className="mt-8 space-y-16" variants={containerVariants} initial={false}>
+      <motion.section id="education" ref={educationRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial={false}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '학력' : 'Education'}
         </h2>
@@ -294,7 +294,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
           ))}
         </div>
       </motion.section>
-      <motion.section id="career" ref={careerRef} className="relative scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+      <motion.section id="career" ref={careerRef} className="relative scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial={false}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '활동 이력' : 'Activities & Experience'}
         </h2>
@@ -324,7 +324,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
           ))}
         </div>
       </motion.section>
-      <motion.section id="awards" ref={awardsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+      <motion.section id="awards" ref={awardsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial={false}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '수상 이력' : 'Awards'}
         </h2>
@@ -346,7 +346,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
           ))}
         </div>
       </motion.section>
-      <motion.section id="projects" ref={projectsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+      <motion.section id="projects" ref={projectsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial={false}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '프로젝트' : 'Projects'}
         </h2>
@@ -362,7 +362,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
           </motion.div>
         </div>
       </motion.section>
-      <motion.section id="news" ref={newsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+      <motion.section id="news" ref={newsRef} className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial={false}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '뉴스' : 'News'}
         </h2>
@@ -378,7 +378,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
         </motion.div>
       </motion.section>
       {/* Summary Section (append-only) */}
-      <motion.section id="summary" className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial="visible">
+      <motion.section id="summary" className="scroll-mt-24 bg-white dark:bg-slate-900 py-12 border-t border-gray-200 dark:border-slate-700 rounded-none" variants={reveal} initial={false}>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">
           {language === 'ko' ? '요약' : 'Summary'}
         </h2>
