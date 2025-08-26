@@ -100,6 +100,9 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab, activeYear, setActiv
       { title: { ko: 'THE CHALLENGE SEASON.2', en: 'THE CHALLENGE SEASON.2' }, award: { ko: '우수상', en: 'Excellence Award' }, organization: { ko: '고려대 세종', en: 'KU Sejong' }, year: { ko: '2024', en: '2024' }, awardDate: { ko: '2024년 10월 02일', en: 'Oct 2, 2024' }, description: { ko: '', en: '' } },
       { title: { ko: 'DSC 지역혁신 플랫폼 운영사업 롤링캠프', en: 'DSC Regional Innovation Platform Operation Project Rolling Camp' }, award: { ko: '우수상', en: 'Excellence Award' }, organization: { ko: 'DSC', en: 'DSC' }, year: { ko: '2024', en: '2024' }, awardDate: { ko: '추후 기재 예정', en: 'TBD' }, description: { ko: '', en: '' } },
     ],
+    '2025': [
+      { title: { ko: '제2회 2025 대한민국 학생 창업주간 - MVP 제작 및 PoC 실증 검증', en: '2nd 2025 Korea Student Startup Week - MVP Production and PoC Verification' }, award: { ko: '대상', en: 'Grand Prize' }, organization: { ko: '한국장학재단', en: 'Korea Student Aid Foundation' }, year: { ko: '2025', en: '2025' }, awardDate: { ko: '2025년 07월 18일', en: 'Jul 18, 2025' }, description: { ko: '팀 AIDn으로 참여하여 MVP 제작 및 PoC 실증 검증 과정에서 우수한 성과를 거둠', en: 'Participated as Team AIDn, achieving excellent results in MVP production and PoC verification process' } },
+    ],
   };
 
   const newsData = [
