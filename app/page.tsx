@@ -23,14 +23,14 @@ const Page = () => {
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-white/80 to-slate-200/80 dark:from-slate-900/80 dark:to-slate-800/80 overflow-hidden">
       {/* subtle pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 z-0 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-transparent before:via-slate-100/5 before:to-transparent before:opacity-20" />
+      <div className="pointer-events-none absolute inset-0 z-0 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-transparent before:via-neutral-100/5 before:to-transparent before:opacity-20" />
       <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="flex justify-end mb-4">
           <button
             className={`rounded-full px-5 py-2 font-semibold border shadow transition
               ${language === 'ko'
-                ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border-slate-800'
-                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+                ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg border-neutral-800'
+                : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700'}`}
             onClick={() => setLanguage('ko')}
             suppressHydrationWarning
           >
@@ -39,8 +39,8 @@ const Page = () => {
           <button
             className={`rounded-full px-5 py-2 font-semibold border shadow transition
               ${language === 'en'
-                ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg border-slate-800'
-                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+                ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg border-neutral-800'
+                : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700'}`}
             onClick={() => setLanguage('en')}
             suppressHydrationWarning
           >
@@ -64,20 +64,20 @@ const Page = () => {
         <div className="mt-8 space-y-8">
           <NoSSR fallback={
             <div className="space-y-4">
-              <nav className="flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-slate-800/40 p-2 shadow-sm">
-                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg">
+              <nav className="flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-neutral-800/40 p-2 shadow-sm">
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg">
                   🎓 학력
                 </button>
-                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700">
                   💼 활동 이력
                 </button>
-                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700">
                   🏆 수상 경력
                 </button>
-                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700">
                   🚀 프로젝트
                 </button>
-                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700">
+                <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700">
                   📰 News
                 </button>
               </nav>

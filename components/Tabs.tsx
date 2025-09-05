@@ -60,10 +60,10 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
                 }
               }
             }}
-            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md bg-white/30 dark:bg-slate-800/40 ${
+            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 backdrop-blur-md border shadow-md ${
               activeTab === item.key
-                ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg'
-                : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
+                ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg border-neutral-800'
+                : 'bg-white/30 dark:bg-neutral-800/40 border-white/40 dark:border-neutral-700/60 text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700'
             }`}
             role="tab"
             aria-selected={activeTab === item.key}
@@ -78,7 +78,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
         {/* underline indicator */}
         <motion.div
           layoutId="tabs-underline"
-          className="absolute bottom-0 h-0.5 bg-slate-900 dark:bg-slate-100 rounded"
+          className="absolute bottom-0 h-0.5 bg-neutral-900 dark:bg-neutral-100 rounded"
           style={{
             left: 0,
             width: 0,
@@ -98,10 +98,10 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
             <motion.button
               key={item.key}
               onClick={() => setActiveYear(item.key)}
-              className={`relative overflow-hidden rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-md bg-white/30 dark:bg-slate-800/40 ${
+              className={`relative overflow-hidden rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 backdrop-blur-md border shadow-md ${
                 activeYear === item.key
-                  ? 'bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg'
-                  : 'text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-700'
+                  ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg border-neutral-800'
+                  : 'bg-white/30 dark:bg-neutral-800/40 border-white/40 dark:border-neutral-700/60 text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -109,7 +109,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
               {activeYear === item.key && (
                 <motion.span
                   layoutId="year-highlight"
-                  className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-800 to-slate-900"
+                  className="absolute inset-0 -z-10 bg-gradient-to-r from-neutral-800 to-neutral-900"
                   style={{ borderRadius: 9999 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 40 }}
                 />
