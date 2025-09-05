@@ -9,47 +9,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary Brand Colors
-        primary: {
-          50: '#fef2f4',
-          100: '#fde6e9',
-          200: '#fbd0d9',
-          300: '#f7aabb',
-          400: '#f27a97',
-          500: '#E30547', // Main brand color
-          600: '#d91c5c',
-          700: '#b91c5c',
-          800: '#9b1c47',
-          900: '#881337',
-          950: '#4c0519',
+        // Minimal Elegant Palette
+        accent: {
+          50: '#f8f9fa',
+          100: '#f1f3f4',
+          200: '#e8eaed',
+          300: '#dadce0',
+          400: '#bdc1c6',
+          500: '#9aa0a6', // Subtle accent
+          600: '#80868b',
+          700: '#5f6368',
+          800: '#3c4043',
+          900: '#202124',
+          950: '#131416',
         },
-        // Secondary Colors (Indigo/Purple gradient)
-        secondary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b',
+        // Monochromatic grays for minimal design
+        stone: {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          300: '#d6d3d1',
+          400: '#a8a29e',
+          500: '#78716c',
+          600: '#57534e',
+          700: '#44403c',
+          800: '#292524',
+          900: '#1c1917',
+          950: '#0c0a09',
         },
-        // Neutral/Gray Scale
-        neutral: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+        // Very subtle brand color for minimal use
+        brand: {
+          50: '#f7f8f8',
+          100: '#edeef1',
+          200: '#d8dae3',
+          300: '#b9bcc8',
+          400: '#9399a9',
+          500: '#757b8b', // Main minimal brand
+          600: '#606570',
+          700: '#4f535c',
+          800: '#43464d',
+          900: '#3b3d43',
+          950: '#25272b',
         },
         // Success, Warning, Error
         success: {
@@ -71,24 +71,45 @@ const config: Config = {
           700: '#b91c1c',
         },
       },
-      // Typography Scale
+      // Minimal Typography Scale - Enhanced readability
       fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1rem' }],
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-        'base': ['1rem', { lineHeight: '1.5rem' }],
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
-        '2xl': ['1.5rem', { lineHeight: '2rem' }],
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-        '5xl': ['3rem', { lineHeight: '1' }],
-        '6xl': ['3.75rem', { lineHeight: '1' }],
+        'xs': ['0.75rem', { lineHeight: '1.125rem', letterSpacing: '0.025em' }],
+        'sm': ['0.875rem', { lineHeight: '1.375rem', letterSpacing: '0.01em' }],
+        'base': ['1rem', { lineHeight: '1.625rem', letterSpacing: 'normal' }],
+        'lg': ['1.125rem', { lineHeight: '1.875rem', letterSpacing: '-0.01em' }],
+        'xl': ['1.25rem', { lineHeight: '2rem', letterSpacing: '-0.015em' }],
+        '2xl': ['1.5rem', { lineHeight: '2.25rem', letterSpacing: '-0.02em' }],
+        '3xl': ['2rem', { lineHeight: '2.75rem', letterSpacing: '-0.025em' }],
+        '4xl': ['2.5rem', { lineHeight: '3rem', letterSpacing: '-0.03em' }],
+        '5xl': ['3.25rem', { lineHeight: '3.5rem', letterSpacing: '-0.035em' }],
+        '6xl': ['4rem', { lineHeight: '1', letterSpacing: '-0.04em' }],
       },
-      // Spacing Scale
+      // Typography weights for minimal design
+      fontWeight: {
+        thin: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+      },
+      // Elegant Spacing Scale - More generous whitespace
       spacing: {
         '18': '4.5rem',
-        '88': '22rem',
+        '22': '5.5rem',
+        '28': '7rem',
+        '36': '9rem',
+        '44': '11rem',
+        '52': '13rem',
+        '60': '15rem',
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem',
         '128': '32rem',
+        '144': '36rem',
+        '160': '40rem',
       },
       // Border Radius
       borderRadius: {

@@ -37,11 +37,11 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
   ];
 
   return (
-    <div className="space-y-4 sticky top-0 z-20 backdrop-blur supports-backdrop-blur:bg-white/40 dark:supports-backdrop-blur:bg-slate-900/40">
+    <div className="space-y-8 sticky top-0 z-20 backdrop-blur supports-backdrop-blur:bg-stone-50/90 dark:supports-backdrop-blur:bg-stone-950/90 py-4">
       <motion.nav
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative flex flex-wrap gap-2 rounded-xl bg-white/30 dark:bg-slate-800/40 p-2 shadow-sm"
+        className="flex flex-wrap gap-3"
         role="tablist"
         aria-label="Profile sections"
       >
@@ -54,37 +54,27 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
               if (typeof window !== 'undefined') {
                 const section = document.getElementById(item.key);
                 if (section) {
-                  const yOffset = -100; // 헤더/탭 높이에 맞게 조정
+                  const yOffset = -100;
                   const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
                   window.scrollTo({ top: y, behavior: 'smooth' });
                 }
               }
             }}
-            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 backdrop-blur-md border shadow-md ${
+            className={`flex items-center gap-3 px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 border-b-2 ${
               activeTab === item.key
-                ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg border-neutral-800'
-                : 'bg-white/30 dark:bg-neutral-800/40 border-white/40 dark:border-neutral-700/60 text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700'
+                ? 'text-stone-900 dark:text-stone-100 border-stone-900 dark:border-stone-100'
+                : 'text-stone-500 dark:text-stone-400 border-transparent hover:text-stone-700 dark:hover:text-stone-300 hover:border-stone-300 dark:hover:border-stone-600'
             }`}
             role="tab"
             aria-selected={activeTab === item.key}
             tabIndex={activeTab === item.key ? 0 : -1}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ y: -2 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <span>{item.icon}</span>
+            <span className="text-base">{item.icon}</span>
             {item.label}
           </motion.button>
         ))}
-        {/* underline indicator */}
-        <motion.div
-          layoutId="tabs-underline"
-          className="absolute bottom-0 h-0.5 bg-neutral-900 dark:bg-neutral-100 rounded"
-          style={{
-            left: 0,
-            width: 0,
-          }}
-          transition={{ type: 'spring', stiffness: 500, damping: 40 }}
-        />
       </motion.nav>
 
       {activeTab !== 'education' && activeTab !== 'news' && (
@@ -92,28 +82,20 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab, activeYear, setAct
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex flex-wrap gap-2"
+          className="flex flex-wrap gap-4"
         >
           {yearItems.map((item) => (
             <motion.button
               key={item.key}
               onClick={() => setActiveYear(item.key)}
-              className={`relative overflow-hidden rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 backdrop-blur-md border shadow-md ${
+              className={`px-4 py-2 text-sm font-medium tracking-wide transition-all duration-300 border-b border-transparent ${
                 activeYear === item.key
-                  ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg border-neutral-800'
-                  : 'bg-white/30 dark:bg-neutral-800/40 border-white/40 dark:border-neutral-700/60 text-neutral-600 hover:bg-neutral-200 dark:text-neutral-300 dark:hover:bg-neutral-700'
+                  ? 'text-accent-600 dark:text-accent-400 border-accent-600 dark:border-accent-400'
+                  : 'text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-400 hover:border-stone-300 dark:hover:border-stone-600'
               }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ y: -1 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              {activeYear === item.key && (
-                <motion.span
-                  layoutId="year-highlight"
-                  className="absolute inset-0 -z-10 bg-gradient-to-r from-neutral-800 to-neutral-900"
-                  style={{ borderRadius: 9999 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 40 }}
-                />
-              )}
               {item.label}
             </motion.button>
           ))}
