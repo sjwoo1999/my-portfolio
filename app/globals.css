@@ -68,14 +68,22 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
+
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    @apply antialiased;
     font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
   }
 
@@ -94,7 +102,9 @@
 
 @layer components {
   .card {
-    @apply rounded-xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+    @apply rounded-xl border p-6 shadow-sm transition-all duration-300 hover:shadow-md;
   }
 
   .btn {
@@ -102,11 +112,15 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:opacity-90;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    @apply hover:opacity-90;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:opacity-90;
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    @apply hover:opacity-90;
   }
 
   .container-custom {
@@ -116,7 +130,8 @@
 
 /* Loading Animation */
 .loading-screen {
-  @apply fixed inset-0 z-50 flex items-center justify-center bg-background;
+  background-color: hsl(var(--background));
+  @apply fixed inset-0 z-50 flex items-center justify-center;
 }
 
 .loading-animation {
@@ -124,7 +139,8 @@
 }
 
 .loading-circle {
-  @apply h-16 w-16 animate-spin rounded-full border-4 border-primary border-t-transparent;
+  border-color: hsl(var(--primary));
+  @apply h-16 w-16 animate-spin rounded-full border-4 border-t-transparent;
 }
 
 /* Smooth Transitions */
@@ -169,6 +185,7 @@
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -179,6 +196,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
