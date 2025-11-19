@@ -20,15 +20,16 @@ const MinimalCard: React.FC<MinimalCardProps> = ({
   animated = true,
   onClick,
 }) => {
-  const prefersReduced = typeof window !== 'undefined' && 
-    window.matchMedia && 
+  const prefersReduced = typeof window !== 'undefined' &&
+    window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Minimal variant styles - very subtle and elegant
+  // Minimal variant styles - very subtle and elegant
   const variantStyles = {
-    elevated: 'bg-white dark:bg-stone-900 shadow-sm hover:shadow-md border-0',
-    bordered: 'bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-none',
-    subtle: 'bg-stone-50 dark:bg-stone-900/50 border-0 shadow-none',
+    elevated: 'bg-card text-card-foreground shadow-sm hover:shadow-md border border-border/50',
+    bordered: 'bg-transparent border border-border shadow-none',
+    subtle: 'bg-muted/50 border-0 shadow-none',
     plain: 'bg-transparent border-0 shadow-none',
   };
 
@@ -36,7 +37,7 @@ const MinimalCard: React.FC<MinimalCardProps> = ({
   const paddingStyles = {
     none: 'p-0',
     sm: 'p-6',
-    md: 'p-8', 
+    md: 'p-8',
     lg: 'p-12',
     xl: 'p-16',
   };
@@ -44,7 +45,7 @@ const MinimalCard: React.FC<MinimalCardProps> = ({
   const baseStyles = `
     ${variantStyles[variant]}
     ${paddingStyles[padding]}
-    rounded-none
+    rounded-2xl
     transition-all duration-500 ease-out
     ${onClick ? 'cursor-pointer' : ''}
     ${className}
@@ -57,12 +58,12 @@ const MinimalCard: React.FC<MinimalCardProps> = ({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ 
-          duration: 0.6, 
+        transition={{
+          duration: 0.6,
           ease: [0.25, 0.25, 0, 1],
-          delay: 0.1 
+          delay: 0.1
         }}
-        whileHover={onClick ? { 
+        whileHover={onClick ? {
           y: -2,
           transition: { duration: 0.3 }
         } : {}}
